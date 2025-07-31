@@ -1,0 +1,16 @@
+```mermaid
+classDiagram
+    class LogEntry {
+        id : AutoField
+        action_time : DateTimeField
+        user : ForeignKey
+        content_type : ForeignKey
+        object_id : TextField
+        object_repr : CharField
+        action_flag : PositiveSmallIntegerField
+        /* Choices: 1=Addition, 2=Change, 3=Deletion */
+        change_message : TextField
+    }
+    LogEntry --> User : "user"
+    LogEntry --> ContentType : "content_type"
+```

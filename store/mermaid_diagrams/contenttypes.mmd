@@ -1,0 +1,10 @@
+```mermaid
+classDiagram
+    class ContentType {
+        id : AutoField
+        app_label : CharField
+        model : CharField
+    }
+    ContentType --> LogEntry : "logentry"
+    ContentType --> Permission : "permission"
+```

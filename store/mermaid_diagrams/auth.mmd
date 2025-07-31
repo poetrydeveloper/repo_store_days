@@ -1,0 +1,34 @@
+```mermaid
+classDiagram
+    class Permission {
+        id : AutoField
+        name : CharField
+        content_type : ForeignKey
+        codename : CharField
+    }
+    Permission o-- Group : "group"
+    Permission o-- User : "user"
+    Permission --> ContentType : "content_type"
+    class Group {
+        id : AutoField
+        name : CharField
+    }
+    Group o-- User : "user"
+    Group o-- Permission : "permissions"
+    class User {
+        id : AutoField
+        password : CharField
+        last_login : DateTimeField
+        is_superuser : BooleanField
+        username : CharField
+        first_name : CharField
+        last_name : CharField
+        email : CharField
+        is_staff : BooleanField
+        is_active : BooleanField
+        date_joined : DateTimeField
+    }
+    User --> LogEntry : "logentry"
+    User o-- Group : "groups"
+    User o-- Permission : "user_permissions"
+```

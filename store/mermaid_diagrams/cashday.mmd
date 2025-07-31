@@ -1,0 +1,26 @@
+```mermaid
+classDiagram
+    class CashDay {
+        id : BigAutoField
+        date : DateField
+        cash_sales_total : DecimalField
+        cash_sales_count : PositiveIntegerField
+        card_sales_total : DecimalField
+        card_sales_count : PositiveIntegerField
+        total_sales : DecimalField
+        is_closed : BooleanField
+    }
+    CashDay --> SaleEvent : "saleevent"
+    class SaleEvent {
+        id : BigAutoField
+        cash_day : ForeignKey
+        event_type : CharField
+        /* Choices: sale=Продажа, price_request=Запрос цены, order=Заказ, custom_order_sale=Продажа заказного товара, return=Возврат товара, fitting=Примерка товара */
+        payment_type : CharField
+        /* Choices: cash=Наличные, card=Карта, none=Без оплаты */
+        amount : DecimalField
+        timestamp : DateTimeField
+        notes : TextField
+    }
+    SaleEvent --> CashDay : "cash_day"
+```
