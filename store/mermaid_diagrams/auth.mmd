@@ -1,4 +1,3 @@
-```mermaid
 classDiagram
     class Permission {
         id : AutoField
@@ -6,15 +5,10 @@ classDiagram
         content_type : ForeignKey
         codename : CharField
     }
-    Permission o-- Group : "group"
-    Permission o-- User : "user"
-    Permission --> ContentType : "content_type"
     class Group {
         id : AutoField
         name : CharField
     }
-    Group o-- User : "user"
-    Group o-- Permission : "permissions"
     class User {
         id : AutoField
         password : CharField
@@ -28,7 +22,9 @@ classDiagram
         is_active : BooleanField
         date_joined : DateTimeField
     }
-    User --> LogEntry : "logentry"
-    User o-- Group : "groups"
-    User o-- Permission : "user_permissions"
-```
+    Permission "*" }o--o{ "*" Group : "group"
+    Permission "*" }o--o{ "*" User : "user"
+    Group "*" }o--o{ "*" User : "user"
+    Group "*" }o--o{ "*" Permission : "permissions"
+    User "*" }o--o{ "*" Group : "groups"
+    User "*" }o--o{ "*" Permission : "user_permissions"
