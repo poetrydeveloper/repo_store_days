@@ -41,6 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_mermaid',
     'cashday.apps.CashdayConfig',
+    'unit.apps.UnitConfig',
+    'customers.apps.CustomersConfig',
+    'product.apps.ProductConfig',
+    'files.apps.FilesConfig',
+    'request_units.apps.RequestUnitsConfig',
+    'suppliers.apps.SuppliersConfig',
+
 ]
 
 MIDDLEWARE = [
